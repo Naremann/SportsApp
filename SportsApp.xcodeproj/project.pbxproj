@@ -15,6 +15,9 @@
 		C8073F342BD6C78C0037AD23 /* SportsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C8073F322BD6C78C0037AD23 /* SportsApp.xcdatamodeld */; };
 		C8073F362BD6C78E0037AD23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8073F352BD6C78E0037AD23 /* Assets.xcassets */; };
 		C8073F392BD6C78E0037AD23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8073F372BD6C78E0037AD23 /* LaunchScreen.storyboard */; };
+		C82608EE2BD8375500993479 /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82608EC2BD8375500993479 /* SportsCollectionViewCell.swift */; };
+		C82608EF2BD8375500993479 /* SportsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C82608ED2BD8375500993479 /* SportsCollectionViewCell.xib */; };
+		C86482A12BD84E3C002C7797 /* SportItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86482A02BD84E3C002C7797 /* SportItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		C8073F352BD6C78E0037AD23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8073F382BD6C78E0037AD23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8073F3A2BD6C78E0037AD23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C82608EC2BD8375500993479 /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
+		C82608ED2BD8375500993479 /* SportsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportsCollectionViewCell.xib; sourceTree = "<group>"; };
+		C86482A02BD84E3C002C7797 /* SportItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,8 @@
 		C8073F282BD6C78C0037AD23 /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
+				C864829F2BD84E21002C7797 /* Model */,
+				C82608EB2BD836C600993479 /* Views */,
 				C8073F292BD6C78C0037AD23 /* AppDelegate.swift */,
 				C8073F2B2BD6C78C0037AD23 /* SceneDelegate.swift */,
 				C8073F2D2BD6C78C0037AD23 /* ViewController.swift */,
@@ -71,6 +79,23 @@
 				0A69831D2BD82A2F00811269 /* Models.swift */,
 			);
 			path = SportsApp;
+			sourceTree = "<group>";
+		};
+		C82608EB2BD836C600993479 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C82608EC2BD8375500993479 /* SportsCollectionViewCell.swift */,
+				C82608ED2BD8375500993479 /* SportsCollectionViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C864829F2BD84E21002C7797 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C86482A02BD84E3C002C7797 /* SportItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +159,7 @@
 				C8073F392BD6C78E0037AD23 /* LaunchScreen.storyboard in Resources */,
 				C8073F362BD6C78E0037AD23 /* Assets.xcassets in Resources */,
 				C8073F312BD6C78C0037AD23 /* Main.storyboard in Resources */,
+				C82608EF2BD8375500993479 /* SportsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +171,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8073F2E2BD6C78C0037AD23 /* ViewController.swift in Sources */,
+				C82608EE2BD8375500993479 /* SportsCollectionViewCell.swift in Sources */,
+				C86482A12BD84E3C002C7797 /* SportItem.swift in Sources */,
 				C8073F2A2BD6C78C0037AD23 /* AppDelegate.swift in Sources */,
 				C8073F342BD6C78C0037AD23 /* SportsApp.xcdatamodeld in Sources */,
 				C8073F2C2BD6C78C0037AD23 /* SceneDelegate.swift in Sources */,
