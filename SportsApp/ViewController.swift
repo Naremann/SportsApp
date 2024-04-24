@@ -41,49 +41,30 @@ class ViewController: UIViewController , UICollectionViewDelegate,UICollectionVi
         cell.sport_name_lb.text = sports?[indexPath.row].sportTitle
                cell.sport_img.image = UIImage(named: (sports?[indexPath.row].sportImage)!)
         
-        return cell
-    }
-   
-    
- 
-    
-    
-    
-    
 
         
-
-  
+        
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height:180)
+    }
     
     
    
     func registerCustomCell(){
         let cellNib = UINib(nibName: "SportsCollectionViewCell", bundle: nil)
-      
-                
-      
         collectionView.register(cellNib, forCellWithReuseIdentifier: "cell")
-
-         
-       
-       collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.frame = view.bounds
       
-        
-
-        
-        
-
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected")
     }
     
-   
-
-
 }
 
