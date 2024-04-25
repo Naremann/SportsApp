@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sports-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,14 +49,42 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sports" image="figure.disc.sports" catalog="system" id="cCV-fO-lhd"/>
+                    <navigationItem key="navigationItem" id="EZn-f5-8lD"/>
                     <connections>
                         <outlet property="collectionView" destination="sFZ-3j-BHp" id="VFQ-Sv-VXl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154.9618320610687" y="-304.22535211267609"/>
+            <point key="canvasLocation" x="2081.679389312977" y="-304.22535211267609"/>
+        </scene>
+        <!--Leagues Table View Controller-->
+        <scene sceneID="XaD-FD-B7i">
+            <objects>
+                <tableViewController storyboardIdentifier="LeaguesTableViewController" id="T3d-ho-gw8" customClass="LeaguesTableViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="jZu-Gs-QTG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mNp-PT-Y7I">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mNp-PT-Y7I" id="eKF-Hx-C55">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="T3d-ho-gw8" id="I27-ik-8KI"/>
+                            <outlet property="delegate" destination="T3d-ho-gw8" id="vwE-bL-IEX"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTa-3p-DVt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2851.1450381679388" y="-303.52112676056339"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="bNf-G1-l6y">
@@ -85,13 +113,32 @@
                         <color key="tintColor" systemColor="systemBlueColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="dPS-9c-aUa"/>
+                        <segue destination="JuC-mM-vCt" kind="relationship" relationship="viewControllers" id="dPS-9c-aUa"/>
                         <segue destination="Zca-QW-und" kind="relationship" relationship="viewControllers" id="dBF-Kc-RU4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lJS-Go-Olo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="260" y="-30"/>
+        </scene>
+        <!--Sports-->
+        <scene sceneID="7nQ-FR-Sgt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JuC-mM-vCt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Sports" image="figure.disc.sports" catalog="system" id="cCV-fO-lhd"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGa-dk-ZUR">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6Jg-on-pfC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZQM-sW-XLp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1154.9618320610687" y="-304.22535211267609"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemTealColor"/>
