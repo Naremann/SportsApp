@@ -13,7 +13,7 @@ struct LeaguesResponse: Codable {
 }
 struct League:Codable{
     let league_key: Int
-    let league_name: String
+    let league_name: String?
     let league_logo:String?
 }
 struct TeamsResponse:Codable{

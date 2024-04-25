@@ -8,6 +8,7 @@
 import Foundation
 
 struct SportItem{
-    var sportImage:String?
-    var sportTitle:String?
+    var sportImage:String
+    var sportTitle:String
+    var sportKey : Sport
 }
