@@ -9,6 +9,8 @@ import UIKit
 
 class FixtureMatchesCell: UICollectionViewCell {
     
+    @IBOutlet weak var vs_img: UIImageView!
+    @IBOutlet weak var team_image: UIImageView!
     @IBOutlet weak var homeTeamText: UILabel!
     
     @IBOutlet weak var awayTeamImage: UIImageView!

@@ -16,3 +16,19 @@ extension UIView{
         self.layer.mask = mask
     }
 }
+
+extension UIImage {
+    func scaledToFit(size: CGSize) -> UIImage {
+        let aspectRatio = self.size.width / self.size.height
+        let scaledWidth = min(size.width, size.height * aspectRatio)
+        let scaledHeight = min(size.height, size.width / aspectRatio)
+        let scaledSize = CGSize(width: scaledWidth, height: scaledHeight)
+
+        UIGraphicsBeginImageContextWithOptions(scaledSize, false, UIScreen.main.scale)
+        defer { UIGraphicsEndImageContext() }
+        self.draw(in: CGRect(origin: .zero, size: scaledSize))
+        guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage() }
+        return scaledImage
+    }
+}
+

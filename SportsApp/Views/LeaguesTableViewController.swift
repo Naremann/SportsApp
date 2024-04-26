@@ -22,6 +22,7 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
         leaguesInteractor = LeaguesInteractorImp()
         leaguesPresenter = LeaguesPresenterImp(interactor: leaguesInteractor!, leaguesView: self)
         leaguesPresenter?.getLeaguesFor(sport: selectedSport)
+        
         print(selectedSport)
     }
 
