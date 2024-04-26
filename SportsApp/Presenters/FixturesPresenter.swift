@@ -8,14 +8,34 @@
 import Foundation
 
 class FixturesPresenter : FixturesPresenterProtocol{
-    var interactor : FixturesInteractorProtocol?
-    var fixturesView : FixturesViewProtocol?
     
-    init(interactor: FixturesInteractorProtocol, fixturesView: FixturesViewProtocol) {
+    var interactor : FixturesInteractorProtocol?
+    var teamInteractor : TeamInteractor?
+    var fixturesView : FixturesViewProtocol?
+    var teamsView : TeamsView?
+    
+    init(interactor: FixturesInteractorProtocol,teamInteractor:TeamInteractor , fixturesView: FixturesViewProtocol,teamsView:TeamsView) {
         self.interactor = interactor
+        self.teamInteractor = teamInteractor
         self.fixturesView = fixturesView
+        self.teamsView = teamsView
     }
     
+    
+    
+    func getTeamsFor(leagueKey: Int, sport: Sport) {
+        
+        teamInteractor?.fetchData(leagueId: leagueKey, selectedSport: sport, completionHandler: { [self] result in
+            switch result {
+            case .success(let teams):
+                self.teamsView?.showTeams(teams: teams)
+            case .failure(let error):
+                 teamsView?.showError(error: error.localizedDescription)
+            }
+            
+        })
+                                  
+    }
     
     
     func getFixturesFor(leagueKey: Int ,sport: Sport) {

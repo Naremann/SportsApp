@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xDt-JR-1Fs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xDt-JR-1Fs">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -69,10 +70,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mNp-PT-Y7I">
-                                <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mNp-PT-Y7I" id="eKF-Hx-C55">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -96,7 +97,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Di6-tA-e2b">
-                                <rect key="frame" x="16" y="84" width="361" height="683"/>
+                                <rect key="frame" x="16" y="136" width="361" height="631"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ak3-B6-GSx">
@@ -162,7 +163,19 @@
                                                     <rect key="frame" x="249" y="41" width="75" height="75"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gY4-Zv-n3A">
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="180"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="gY4-Zv-n3A" secondAttribute="height" multiplier="176:83" id="DBa-Ah-1GM"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gY4-Zv-n3A" firstAttribute="height" secondItem="d2m-Rt-TiM" secondAttribute="height" id="Bfw-Qz-xh6"/>
+                                                <constraint firstItem="gY4-Zv-n3A" firstAttribute="width" secondItem="d2m-Rt-TiM" secondAttribute="width" id="JUo-Pd-cf7"/>
+                                                <constraint firstItem="gY4-Zv-n3A" firstAttribute="top" secondItem="d2m-Rt-TiM" secondAttribute="top" id="Jnm-2E-ADY"/>
+                                                <constraint firstItem="gY4-Zv-n3A" firstAttribute="leading" secondItem="d2m-Rt-TiM" secondAttribute="leading" id="NoK-PA-5n9"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                         <size key="customSize" width="360" height="180"/>
@@ -177,6 +190,7 @@
                                             <outlet property="dateText" destination="VdF-hZ-fgO" id="XY6-De-EIc"/>
                                             <outlet property="homeTeamImage" destination="lKS-cG-R1K" id="mLO-z2-s6m"/>
                                             <outlet property="homeTeamText" destination="mca-dZ-dfc" id="6Bp-xS-qSM"/>
+                                            <outlet property="team_image" destination="gY4-Zv-n3A" id="MY2-kb-Wrh"/>
                                             <outlet property="timeText" destination="62u-Er-cvO" id="g8I-jI-e3K"/>
                                         </connections>
                                     </collectionViewCell>
@@ -186,6 +200,23 @@
                                     <outlet property="delegate" destination="l6x-4I-Agr" id="Lyq-AH-Mba"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5W-Fk-IZY">
+                                <rect key="frame" x="302" y="71" width="75" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="0.21427117079999999" blue="0.16507792039999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="heart" catalog="system">
+                                    <color key="titleColor" red="1" green="0.21427117079999999" blue="0.16507792039999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="semibold"/>
+                                    <color key="baseForegroundColor" red="1" green="0.21427117079999999" blue="0.16507792039999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveLeagueToFav:" destination="l6x-4I-Agr" eventType="touchUpInside" id="cNa-3y-3Yt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WhV-AO-1zV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -256,6 +287,7 @@
     <color key="tintColor" systemColor="systemTealColor"/>
     <resources>
         <image name="figure.disc.sports" catalog="system" width="128" height="108"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="suit.heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
