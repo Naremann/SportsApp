@@ -35,7 +35,7 @@ struct Fixture:Codable{
     let event_time :String
     let event_home_team :String
     let event_away_team :String
-    let event_final_result : String?
+    let event_ft_result : String?
     let home_team_logo : String?
     let away_team_logo : String?
 }
