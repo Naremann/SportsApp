@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
+//import SDWebImage
 
 class LeaguesTableViewController: UITableViewController,LeaguesView {
     
@@ -63,6 +64,14 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var fixtureVC = self.storyboard?.instantiateViewController(withIdentifier: "FixtureMatchesViewController") as? FixtureMatchesViewController
+        var key = leagues?[indexPath.row].league_key
+        fixtureVC?.leagueKey = key
+        fixtureVC?.selectedSport = selectedSport
+        print(fixtureVC?.leagueKey)
+        navigationController?.pushViewController(fixtureVC!, animated: true)
+    }
     
     private func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         if let league = leagues?[indexPath.row] {
@@ -76,11 +85,11 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
         guard let imageView = imageView else { return }
         imageView.frame.size = CGSize(width: 40, height: 40)
         imageView.round()
-        if let imageUrl = imageURL{
-            imageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "sports"))
-    
-        }
-        imageView.image = UIImage(named: "sports")
+//        if let imageUrl = imageURL{
+//            imageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "sports"))
+//    
+//        }
+//        imageView.image = UIImage(named: "sports")
     }
     
     
