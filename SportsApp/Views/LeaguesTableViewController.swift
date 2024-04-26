@@ -85,11 +85,12 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
         guard let imageView = imageView else { return }
         imageView.frame.size = CGSize(width: 40, height: 40)
         imageView.round()
-//        if let imageUrl = imageURL{
-//            imageView.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "sports"))
-//    
-//        }
-//        imageView.image = UIImage(named: "sports")
+        if let imageUrl = imageURL {
+            let url = URL(string: imageUrl)
+            imageView.kf.setImage(with: url, placeholder: UIImage(named: "sports"))
+        } else {
+            imageView.image = UIImage(named: "sports")
+        }
     }
     
     
