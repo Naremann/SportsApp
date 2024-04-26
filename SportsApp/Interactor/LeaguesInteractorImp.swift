@@ -22,6 +22,7 @@ class LeaguesInteractorImp:LeaguesInteractor{
             
                     return
                 }
+                
                 do {
                     let decoder = JSONDecoder()
                        let apiResponse = try decoder.decode(LeaguesResponse.self, from: data)
