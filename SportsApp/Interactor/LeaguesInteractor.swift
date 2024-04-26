@@ -8,4 +8,6 @@
 import Foundation
 protocol LeaguesInteractor{
     func fetchData(sport:Sport,completionHandler: @escaping(Result<[League] , Error>) -> Void)
+    
+    
 }

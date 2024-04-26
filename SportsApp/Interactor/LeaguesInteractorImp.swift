@@ -9,6 +9,9 @@ import Foundation
 import Alamofire
 
 class LeaguesInteractorImp:LeaguesInteractor{
+    
+    
+    
     func fetchData(sport: Sport, completionHandler: @escaping(Result<[League], Error>) -> Void) {
         
         let urlString = "\(Contants.BASE_URL)\(sport)/?met=Leagues&APIkey=\(Contants.API_KEY)"
@@ -29,9 +32,9 @@ class LeaguesInteractorImp:LeaguesInteractor{
                        let leagues = apiResponse.result
                     print("******************************")
                     for league in leagues {
-                            print("League Key:", league.league_key)
-                            print("League Name:", league.league_name ?? "N/A")
-                            print("League Logo:", league.league_logo ?? "N/A")
+//                            print("League Key:", league.league_key)
+//                            print("League Name:", league.league_name ?? "N/A")
+//                            print("League Logo:", league.league_logo ?? "N/A")
                         }
                     completionHandler(.success(leagues))
                 } catch {

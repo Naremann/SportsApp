@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0A69831E2BD82A2F00811269 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69831D2BD82A2F00811269 /* Models.swift */; };
+		0A7F44092BDAF62100BDB5CA /* FixtureMatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F44082BDAF62100BDB5CA /* FixtureMatchesViewController.swift */; };
+		0A7F440B2BDAF74200BDB5CA /* FixtureMatchesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F440A2BDAF74200BDB5CA /* FixtureMatchesCell.swift */; };
+		0A7F440D2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F440C2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift */; };
+		0A7F440F2BDB01FE00BDB5CA /* FixturesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F440E2BDB01FE00BDB5CA /* FixturesPresenter.swift */; };
+		0A7F44112BDB026400BDB5CA /* FixturesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F44102BDB026400BDB5CA /* FixturesViewProtocol.swift */; };
+		0A7F44132BDB225600BDB5CA /* FixturesInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F44122BDB225600BDB5CA /* FixturesInteractorProtocol.swift */; };
+		0A7F44152BDB227700BDB5CA /* FixturesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F44142BDB227700BDB5CA /* FixturesInteractor.swift */; };
+		0AD5C8892BDACF1300FBC7A2 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD5C8882BDACF1300FBC7A2 /* SDWebImage */; };
+		0AD5C88B2BDACF1300FBC7A2 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD5C88A2BDACF1300FBC7A2 /* SDWebImageMapKit */; };
 		4436CBE50988BD2F8D710DD3 /* Pods_SportsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EE0156598F1920C7541147 /* Pods_SportsApp.framework */; };
 		C8073F2A2BD6C78C0037AD23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8073F292BD6C78C0037AD23 /* AppDelegate.swift */; };
 		C8073F2C2BD6C78C0037AD23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8073F2B2BD6C78C0037AD23 /* SceneDelegate.swift */; };
@@ -36,6 +45,13 @@
 
 /* Begin PBXFileReference section */
 		0A69831D2BD82A2F00811269 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0A7F44082BDAF62100BDB5CA /* FixtureMatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureMatchesViewController.swift; sourceTree = "<group>"; };
+		0A7F440A2BDAF74200BDB5CA /* FixtureMatchesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureMatchesCell.swift; sourceTree = "<group>"; };
+		0A7F440C2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesPresenterProtocol.swift; sourceTree = "<group>"; };
+		0A7F440E2BDB01FE00BDB5CA /* FixturesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesPresenter.swift; sourceTree = "<group>"; };
+		0A7F44102BDB026400BDB5CA /* FixturesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesViewProtocol.swift; sourceTree = "<group>"; };
+		0A7F44122BDB225600BDB5CA /* FixturesInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesInteractorProtocol.swift; sourceTree = "<group>"; };
+		0A7F44142BDB227700BDB5CA /* FixturesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesInteractor.swift; sourceTree = "<group>"; };
 		4B289192DA853CDAC5F1963A /* Pods-SportsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApp.debug.xcconfig"; path = "Target Support Files/Pods-SportsApp/Pods-SportsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4EAC5BC06C3654A6EA8CDACD /* Pods-SportsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApp.release.xcconfig"; path = "Target Support Files/Pods-SportsApp/Pods-SportsApp.release.xcconfig"; sourceTree = "<group>"; };
 		53EE0156598F1920C7541147 /* Pods_SportsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD5C8892BDACF1300FBC7A2 /* SDWebImage in Frameworks */,
+				0AD5C88B2BDACF1300FBC7A2 /* SDWebImageMapKit in Frameworks */,
 				4436CBE50988BD2F8D710DD3 /* Pods_SportsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +96,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A7F44052BDAE5F600BDB5CA /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				0A7F44102BDB026400BDB5CA /* FixturesViewProtocol.swift */,
+				0A7F44082BDAF62100BDB5CA /* FixtureMatchesViewController.swift */,
+				0A7F440A2BDAF74200BDB5CA /* FixtureMatchesCell.swift */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
 		336853A8BDE1633AC6AEE081 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +167,7 @@
 		C82608EB2BD836C600993479 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A7F44052BDAE5F600BDB5CA /* Fixtures */,
 				C882032F2BDA559F00A36B05 /* Home */,
 				C88203302BDA563F00A36B05 /* LeaguesTableViewController.swift */,
 			);
@@ -160,6 +189,8 @@
 				C882032D2BDA4A4C00A36B05 /* SportsPresenterImp.swift */,
 				C8B1A7EF2BDA6D50004E794E /* LeaguesPresenter.swift */,
 				C8B1A7F12BDA6D65004E794E /* LeaguesPresenterImp.swift */,
+				0A7F440C2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift */,
+				0A7F440E2BDB01FE00BDB5CA /* FixturesPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -179,9 +210,7 @@
 			children = (
 				C8B1A7F42BDA7034004E794E /* LeaguesInteractor.swift */,
 				C8B1A7F62BDA7124004E794E /* LeaguesInteractorImp.swift */,
-				C83F7FBE2BDAEA9100C2AAB0 /* Database.swift */,
-				C83F7FC02BDAEB4300C2AAB0 /* CoreDataDatabase.swift */,
-			);
+
 			path = Interactor;
 			sourceTree = "<group>";
 		};
@@ -211,6 +240,10 @@
 			dependencies = (
 			);
 			name = SportsApp;
+			packageProductDependencies = (
+				0AD5C8882BDACF1300FBC7A2 /* SDWebImage */,
+				0AD5C88A2BDACF1300FBC7A2 /* SDWebImageMapKit */,
+			);
 			productName = SportsApp;
 			productReference = C8073F262BD6C78C0037AD23 /* SportsApp.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +272,9 @@
 				Base,
 			);
 			mainGroup = C8073F1D2BD6C78C0037AD23;
+			packageReferences = (
+				0AD5C8872BDACF1300FBC7A2 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = C8073F272BD6C78C0037AD23 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -311,6 +347,7 @@
 			files = (
 				C8B1A7F92BDA79BE004E794E /* NetworkError.swift in Sources */,
 				C8073F2E2BD6C78C0037AD23 /* ViewController.swift in Sources */,
+				0A7F44092BDAF62100BDB5CA /* FixtureMatchesViewController.swift in Sources */,
 				C88203332BDA573900A36B05 /* Constants.swift in Sources */,
 				C882032E2BDA4A4C00A36B05 /* SportsPresenterImp.swift in Sources */,
 				C82608EE2BD8375500993479 /* SportsCollectionViewCell.swift in Sources */,
@@ -320,12 +357,18 @@
 				C8073F2A2BD6C78C0037AD23 /* AppDelegate.swift in Sources */,
 				C83F7FC12BDAEB4300C2AAB0 /* CoreDataDatabase.swift in Sources */,
 				C8073F342BD6C78C0037AD23 /* SportsApp.xcdatamodeld in Sources */,
+				0A7F440B2BDAF74200BDB5CA /* FixtureMatchesCell.swift in Sources */,
+				0A7F44132BDB225600BDB5CA /* FixturesInteractorProtocol.swift in Sources */,
+				0A7F44112BDB026400BDB5CA /* FixturesViewProtocol.swift in Sources */,
 				C8B1A7F02BDA6D50004E794E /* LeaguesPresenter.swift in Sources */,
 				C8073F2C2BD6C78C0037AD23 /* SceneDelegate.swift in Sources */,
+				0A7F44152BDB227700BDB5CA /* FixturesInteractor.swift in Sources */,
 				C8B852562BDAA4C60044800E /* UIView+Extensions.swift in Sources */,
 				C8B1A7F52BDA7034004E794E /* LeaguesInteractor.swift in Sources */,
+				0A7F440F2BDB01FE00BDB5CA /* FixturesPresenter.swift in Sources */,
 				C8B1A7F72BDA7124004E794E /* LeaguesInteractorImp.swift in Sources */,
 				C88203312BDA563F00A36B05 /* LeaguesTableViewController.swift in Sources */,
+				0A7F440D2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift in Sources */,
 				C88203352BDA582300A36B05 /* Sport.swift in Sources */,
 				C83F7FBF2BDAEA9100C2AAB0 /* Database.swift in Sources */,
 				0A69831E2BD82A2F00811269 /* Models.swift in Sources */,
@@ -481,8 +524,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,8 +554,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -546,6 +593,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0AD5C8872BDACF1300FBC7A2 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0AD5C8882BDACF1300FBC7A2 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AD5C8872BDACF1300FBC7A2 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		0AD5C88A2BDACF1300FBC7A2 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AD5C8872BDACF1300FBC7A2 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C8073F322BD6C78C0037AD23 /* SportsApp.xcdatamodeld */ = {
