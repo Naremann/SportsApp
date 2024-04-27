@@ -10,7 +10,9 @@ import Kingfisher
 
 class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,FixturesViewProtocol , TeamsView{
     
+    @IBOutlet weak var blankHeart: UIImageView!
     
+    @IBOutlet weak var fillHeart: UIImageView!
     
     @IBOutlet weak var fixturesCollectionView: UICollectionView!
     
@@ -23,9 +25,16 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
     var fixturesPresenterProtocol : FixturesPresenterProtocol?
     var selectedSport : Sport = .football
     var leagueKey :Int?
+    var league : League?
+    var database : Database?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(blankHeartTapped))
+            blankHeart.isUserInteractionEnabled = true
+            blankHeart.addGestureRecognizer(tapGestureRecognizer)
+
+        database = CoreDataDatabase()
         teams = []
         fixturesInteractor = FixturesInteractor()
         teamInteractor = TeamInteractorImp()
@@ -209,8 +218,33 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
     }
 
     
-    @IBAction func saveLeagueToFav(_ sender: UIButton) {
-    }
+
+    
+    @objc func blankHeartTapped() {
+
+        DispatchQueue.main.async {
+            self.blankHeart.isHidden = true
+            self.fillHeart.isHidden = false
+        }
+        var leagueUrl : String = ""
+        guard let selectedLeague = league else {
+            
+            print("Selected league is nil")
+            return
+        }
+        if let leagueLogo = selectedLeague.league_logo {
+            leagueUrl = leagueLogo
+        }
+        print("LEAGUE URL: \(leagueUrl)")
+
+       
+        let leagueItem = League(league_key: selectedLeague.league_key, league_name: selectedLeague.league_name, league_logo: leagueUrl, logo_data: nil)
+        database?.saveLeagueItem(league: leagueItem)
+}
+        
+
+    
+
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

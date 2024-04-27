@@ -8,6 +8,7 @@
 import Foundation
 
 class FixturesPresenter : FixturesPresenterProtocol{
+   
     
     var interactor : FixturesInteractorProtocol?
     var teamInteractor : TeamInteractor?
@@ -48,6 +49,8 @@ class FixturesPresenter : FixturesPresenterProtocol{
             }
         })
     }
+    
+    
     
     
 }
