@@ -15,6 +15,7 @@ struct League:Codable{
     let league_key: Int
     let league_name: String?
     let league_logo:String?
+    let logo_data:Data?
 }
 struct TeamsResponse:Codable{
     let success: Int

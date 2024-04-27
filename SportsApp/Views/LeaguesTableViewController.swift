@@ -45,6 +45,7 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
         return leagues?.count ?? 0
     }
 
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -70,6 +71,7 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
         var key = leagues?[indexPath.row].league_key
         fixtureVC?.leagueKey = key
         fixtureVC?.selectedSport = selectedSport
+        fixtureVC?.league = leagues?[indexPath.row]
         print(fixtureVC?.leagueKey)
         navigationController?.pushViewController(fixtureVC!, animated: true)
     }
