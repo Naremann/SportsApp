@@ -95,6 +95,7 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
         
         switch indexPath.section {
         case 0:
+            var imgFlag = true
             print(upcomingFixture[indexPath.row])
             cell.homeTeamText.text = upcomingFixture[indexPath.row].event_home_team
             cell.awayTeamText.text = upcomingFixture[indexPath.row].event_away_team
@@ -115,9 +116,12 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
             cell.homeTeamImage.kf.setImage(with: urlHome )
             var urlAway = URL(string: latestFixtures[indexPath.row].away_team_logo ?? "")
             cell.awayTeamImage.kf.setImage(with: urlAway )
-        default:
+        case 2:
            
             configureTeamsLatestCell(cell, at: indexPath)
+            
+        default:
+            print("CELL")
 
         }
         
@@ -151,6 +155,8 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
         print("TEMA LOGO:\(imageUrl)")
         
     }
+    
+    
   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 360, height: 200)
@@ -207,4 +213,11 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("\(indexPath.section),\(indexPath.row)")
+        print(teams?[indexPath.row].players?[0].player_name)
+        var teamVC = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsViewController") as! TeamDetailsViewController
+        teamVC.teamDetails = teams?[indexPath.row]
+        self.navigationController?.pushViewController(teamVC, animated: true)
+    }
 }

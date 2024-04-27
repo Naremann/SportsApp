@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1D970D2BDD177F00E6B2AD /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D970C2BDD177F00E6B2AD /* TeamDetailsViewController.swift */; };
+		0A1D97102BDD18FF00E6B2AD /* PlayerCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D970F2BDD18FF00E6B2AD /* PlayerCustomCell.swift */; };
 		0A69831E2BD82A2F00811269 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A69831D2BD82A2F00811269 /* Models.swift */; };
 		0A7F44092BDAF62100BDB5CA /* FixtureMatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F44082BDAF62100BDB5CA /* FixtureMatchesViewController.swift */; };
 		0A7F440B2BDAF74200BDB5CA /* FixtureMatchesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F440A2BDAF74200BDB5CA /* FixtureMatchesCell.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1D970C2BDD177F00E6B2AD /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
+		0A1D970F2BDD18FF00E6B2AD /* PlayerCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCustomCell.swift; sourceTree = "<group>"; };
 		0A69831D2BD82A2F00811269 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		0A7F44082BDAF62100BDB5CA /* FixtureMatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureMatchesViewController.swift; sourceTree = "<group>"; };
 		0A7F440A2BDAF74200BDB5CA /* FixtureMatchesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureMatchesCell.swift; sourceTree = "<group>"; };
@@ -96,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1D970E2BDD18CF00E6B2AD /* TeamDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0A1D970C2BDD177F00E6B2AD /* TeamDetailsViewController.swift */,
+				0A1D970F2BDD18FF00E6B2AD /* PlayerCustomCell.swift */,
+			);
+			path = TeamDetails;
+			sourceTree = "<group>";
+		};
 		0A7F44052BDAE5F600BDB5CA /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +180,7 @@
 		C82608EB2BD836C600993479 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0A1D970E2BDD18CF00E6B2AD /* TeamDetails */,
 				0A7F44052BDAE5F600BDB5CA /* Fixtures */,
 				C882032F2BDA559F00A36B05 /* Home */,
 				C88203302BDA563F00A36B05 /* LeaguesTableViewController.swift */,
@@ -364,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A1D97102BDD18FF00E6B2AD /* PlayerCustomCell.swift in Sources */,
 				C8B1A7F92BDA79BE004E794E /* NetworkError.swift in Sources */,
 				C8073F2E2BD6C78C0037AD23 /* ViewController.swift in Sources */,
 				0A7F44092BDAF62100BDB5CA /* FixtureMatchesViewController.swift in Sources */,
@@ -392,6 +407,7 @@
 				0A7F440D2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift in Sources */,
 				C88203352BDA582300A36B05 /* Sport.swift in Sources */,
 				C8022B2C2BDBF3B30064E778 /* Database.swift in Sources */,
+				0A1D970D2BDD177F00E6B2AD /* TeamDetailsViewController.swift in Sources */,
 				0A69831E2BD82A2F00811269 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +556,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ND3VY6WQHK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SportsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -570,6 +587,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ND3VY6WQHK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SportsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
