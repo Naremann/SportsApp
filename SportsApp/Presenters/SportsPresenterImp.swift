@@ -26,10 +26,10 @@ class SportsPresenterImp : SportsPresenter{
     
     
     private func getSportsData() -> [SportItem]{
-        let sports =  [SportItem(sportImage: "sports",sportTitle: "Football",sportKey: .football),
-                       SportItem(sportImage: "sports",sportTitle: "BasketBall", sportKey: .basketball),
-                       SportItem(sportImage: "sports",sportTitle: "Cricket", sportKey: .cricket),
-                       SportItem(sportImage: "sports",sportTitle: "Tennis", sportKey: .tennis)]
+        let sports =  [SportItem(sportImage: "football",sportTitle: "Football",sportKey: .football),
+                       SportItem(sportImage: "basketball",sportTitle: "BasketBall", sportKey: .basketball),
+                       SportItem(sportImage: "cricket",sportTitle: "Cricket", sportKey: .cricket),
+                       SportItem(sportImage: "tennis",sportTitle: "Tennis", sportKey: .tennis)]
         return sports
     }
     

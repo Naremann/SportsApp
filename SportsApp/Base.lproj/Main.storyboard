@@ -68,14 +68,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="95" id="mNp-PT-Y7I">
-                                <rect key="frame" x="0.0" y="50" width="393" height="95"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" focusStyle="custom" rowHeight="73" id="mNp-PT-Y7I" customClass="LeagueTableViewCell" customModule="SportsApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mNp-PT-Y7I" id="eKF-Hx-C55">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="95"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnz-YG-LiN">
+                                            <rect key="frame" x="128" y="11" width="231" height="51"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKJ-yv-TLY">
+                                            <rect key="frame" x="20" y="3" width="70" height="70"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="league_img" destination="tKJ-yv-TLY" id="67s-iL-uQh"/>
+                                    <outlet property="league_name" destination="dnz-YG-LiN" id="X8B-j9-bB0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -355,7 +373,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sports" translatesAutoresizingMaskIntoConstraints="NO" id="dtQ-iR-8BG">
-                                                    <rect key="frame" x="20" y="12" width="80" height="72"/>
+                                                    <rect key="frame" x="20" y="12" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="StO-Y2-VRU"/>
                                                     </constraints>
@@ -363,23 +381,25 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ExA-iu-RO7">
                                                     <rect key="frame" x="115" y="21" width="216" height="54"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="216" id="r2s-6G-81T"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="216" id="r2s-6G-81T"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="dtQ-iR-8BG" secondAttribute="bottom" id="0Zr-67-Oaa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dtQ-iR-8BG" secondAttribute="bottom" constant="-8" id="0Zr-67-Oaa"/>
                                                 <constraint firstItem="dtQ-iR-8BG" firstAttribute="top" secondItem="3xd-qq-cbC" secondAttribute="topMargin" constant="1" id="4bR-AQ-KeH"/>
-                                                <constraint firstItem="ExA-iu-RO7" firstAttribute="leading" secondItem="dtQ-iR-8BG" secondAttribute="trailing" constant="15" id="8nH-fp-IbH"/>
+                                                <constraint firstItem="ExA-iu-RO7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dtQ-iR-8BG" secondAttribute="trailing" constant="8" symbolic="YES" id="8nH-fp-IbH"/>
+                                                <constraint firstAttribute="trailing" secondItem="ExA-iu-RO7" secondAttribute="trailing" constant="30" id="MQI-a6-0jF"/>
                                                 <constraint firstItem="dtQ-iR-8BG" firstAttribute="leading" secondItem="3xd-qq-cbC" secondAttribute="leadingMargin" id="RGH-b9-56q"/>
                                                 <constraint firstItem="ExA-iu-RO7" firstAttribute="top" secondItem="3xd-qq-cbC" secondAttribute="topMargin" constant="10" id="U73-xP-Gls"/>
-                                                <constraint firstItem="dtQ-iR-8BG" firstAttribute="centerY" secondItem="ExA-iu-RO7" secondAttribute="centerY" id="gJF-qj-PZI"/>
+                                                <constraint firstItem="dtQ-iR-8BG" firstAttribute="centerY" secondItem="ExA-iu-RO7" secondAttribute="centerY" constant="4" id="gJF-qj-PZI"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="league_img" destination="dtQ-iR-8BG" id="I3a-TQ-ceS"/>
                                             <outlet property="league_name" destination="ExA-iu-RO7" id="iLs-RT-sqP"/>

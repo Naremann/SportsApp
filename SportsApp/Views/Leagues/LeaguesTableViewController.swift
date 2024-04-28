@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 //import SDWebImage
 
-class LeaguesTableViewController: UITableViewController,LeaguesView {
+class LeaguesTableViewController: UITableViewController,UICollectionViewDelegateFlowLayout,LeaguesView {
     
     var selectedSport : Sport = .football
     var leagues : [League]?
@@ -18,18 +18,25 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self , forCellReuseIdentifier: "cell")
+        NetworkIntecator.startAnimating(view: view)
+        let sport = getStringOfSelectedSport()
+        tableView.customCellTitleHeader(cellTitle: sport)
+        initDependencies()
+        print(selectedSport)
+    }
+    
+    func initDependencies(){
         leaguesInteractor = LeaguesInteractorImp()
         leaguesPresenter = LeaguesPresenterImp(interactor: leaguesInteractor!, leaguesView: self)
         leaguesPresenter?.getLeaguesFor(sport: selectedSport)
-        
-        print(selectedSport)
     }
 
     func showLeagues(leagues: [League]) {
         self.leagues = leagues
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            NetworkIntecator.stopAnimation()
+
             }
     }
     
@@ -48,27 +55,18 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueTableViewCell
 
-        /*let cellContentView = UIView()
-           cell.contentView.addSubview(cellContentView)
-           cellContentView.translatesAutoresizingMaskIntoConstraints = false
-           
-           
-           let leadingConstraint = cellContentView.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 20)
-           let topConstraint = cellContentView.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 20)
-           let trailingConstraint = cell.contentView.trailingAnchor.constraint(equalTo: cellContentView.trailingAnchor, constant: 20)
-        let bottomConstraint = cell.contentView.bottomAnchor.constraint(equalTo: cellContentView.bottomAnchor, constant: 20)
-           NSLayoutConstraint.activate([leadingConstraint, topConstraint, trailingConstraint, bottomConstraint])*/
-           
-        configureCell(cell, at: indexPath)
+       configureCell(cell, at: indexPath)
 
         return cell
     }
     
+
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var fixtureVC = self.storyboard?.instantiateViewController(withIdentifier: "FixtureMatchesViewController") as? FixtureMatchesViewController
-        var key = leagues?[indexPath.row].league_key
+        let key = leagues?[indexPath.row].league_key
         fixtureVC?.leagueKey = key
         fixtureVC?.selectedSport = selectedSport
         fixtureVC?.league = leagues?[indexPath.row]
@@ -76,17 +74,26 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
         navigationController?.pushViewController(fixtureVC!, animated: true)
     }
     
-    private func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
+    private func configureCell(_ cell: LeagueTableViewCell, at indexPath: IndexPath) {
         if let league = leagues?[indexPath.row] {
-            cell.textLabel?.text = league.league_name
-
-            configureCellImageView(cell.imageView, with: league.league_logo)
+            cell.layer.borderColor = UIColor.yellow.cgColor
+            cell.layer.borderWidth = 2
+            cell.league_name?.text = league.league_name
+            cell.league_img.layer.borderWidth = 2
+            cell.league_img.layer.borderColor = UIColor.systemYellow.cgColor
+            cell.league_img.clipsToBounds = true
+            cell.league_img.layer.cornerRadius = 35
+            cell.league_img.round() 
+            configureCellImageView(cell.league_img, with: league.league_logo)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
     }
 
     private func configureCellImageView(_ imageView: UIImageView?, with imageURL: String?) {
         guard let imageView = imageView else { return }
-        imageView.frame.size = CGSize(width: 40, height: 40)
         imageView.round()
         if let imageUrl = imageURL {
             let url = URL(string: imageUrl)
@@ -95,6 +102,28 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
             imageView.image = UIImage(named: "sports")
         }
     }
+    
+    func getStringOfSelectedSport()->String{
+        switch selectedSport{
+        case .football:
+            return "Football"
+            break
+        case .cricket:
+            return "Cricket"
+            break
+        case .basketball:
+            return "Basketball"
+        default:
+            return "Tennis"
+            break
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     
 
@@ -144,5 +173,7 @@ class LeaguesTableViewController: UITableViewController,LeaguesView {
     */
 
 }
+
+
 
 

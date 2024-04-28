@@ -16,12 +16,19 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
+        tableView.customCellTitleHeader(cellTitle: "Favorite Leagues ⚽❤️⚽")
         presenter = FavoriteLeaguesPresenterImpl(view: self , database: CoreDataDatabase())
         super.viewDidLoad()
         presenter.viewDidLoad()
 
        
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("HELOOOO, viewWillAppear")
+        presenter.viewDidLoad()
+        tableView.reloadData()
     }
     
     func displayFavoriteLeagues(leagues: [League]) {
@@ -37,10 +44,15 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ImageAndLabelTableViewCell
        
         let league = favoriteLeagues[indexPath.row]
+        cell.layer.borderColor = UIColor.yellow.cgColor
+        cell.layer.borderWidth = 2
+        
         cell.league_name.text = league.league_name
-        cell.league_img.layer.borderWidth = 7
-        cell.league_img.layer.borderColor = UIColor.red.cgColor
+        cell.league_img.layer.borderWidth = 2
+        cell.league_img.layer.borderColor = UIColor.systemYellow.cgColor
         cell.league_img.layer.cornerRadius = 40
+        cell.league_img.clipsToBounds = true
+
         cell.league_img.round()
         if let data = league.logo_data {
             cell.league_img.image = UIImage(data: data)
@@ -54,7 +66,7 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
     }
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 90
     }
     
 
