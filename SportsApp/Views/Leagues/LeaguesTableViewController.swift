@@ -9,15 +9,24 @@ import UIKit
 import Kingfisher
 //import SDWebImage
 
-class LeaguesTableViewController: UITableViewController,UICollectionViewDelegateFlowLayout,LeaguesView {
+class LeaguesTableViewController: UITableViewController,UICollectionViewDelegateFlowLayout,LeaguesView, UISearchResultsUpdating {
+    
+    
     
     var selectedSport : Sport = .football
     var leagues : [League]?
     var leaguesPresenter : LeaguesPresenter?
     var leaguesInteractor : LeaguesInteractor?
+    var searchController = UISearchController(searchResultsController: nil)
+    var filteredLeagues: [League]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchController.searchResultsUpdater = self
+                searchController.obscuresBackgroundDuringPresentation = false
+                searchController.searchBar.placeholder = "Search"
+                navigationItem.searchController = searchController
+                definesPresentationContext = true
         NetworkIntecator.startAnimating(view: view)
         let sport = getStringOfSelectedSport()
         tableView.customCellTitleHeader(cellTitle: sport)
@@ -33,6 +42,7 @@ class LeaguesTableViewController: UITableViewController,UICollectionViewDelegate
 
     func showLeagues(leagues: [League]) {
         self.leagues = leagues
+        self.filteredLeagues = leagues
         DispatchQueue.main.async {
             self.tableView.reloadData()
             NetworkIntecator.stopAnimation()
@@ -41,6 +51,8 @@ class LeaguesTableViewController: UITableViewController,UICollectionViewDelegate
     }
     
     func showError(error: String) {
+        AlertManager.showAlertWithoutTitle(message: "Error !!!", viewController: self)
+        self.navigationController?.popViewController(animated: true)
         print("Erorrrrrrr:\(error)")
     }
 
@@ -49,7 +61,7 @@ class LeaguesTableViewController: UITableViewController,UICollectionViewDelegate
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leagues?.count ?? 0
+        return filteredLeagues?.count ?? 0
     }
 
 
@@ -65,17 +77,20 @@ class LeaguesTableViewController: UITableViewController,UICollectionViewDelegate
 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var fixtureVC = self.storyboard?.instantiateViewController(withIdentifier: "FixtureMatchesViewController") as? FixtureMatchesViewController
-        let key = leagues?[indexPath.row].league_key
-        fixtureVC?.leagueKey = key
-        fixtureVC?.selectedSport = selectedSport
-        fixtureVC?.league = leagues?[indexPath.row]
-        print(fixtureVC?.leagueKey)
-        navigationController?.pushViewController(fixtureVC!, animated: true)
+        if selectedSport == .tennis {
+            AlertManager.showAlertWithoutTitle(message: "No League Details", viewController: self)
+        }else{
+            var fixtureVC = self.storyboard?.instantiateViewController(withIdentifier: "FixtureMatchesViewController") as? FixtureMatchesViewController
+            let key = filteredLeagues?[indexPath.row].league_key
+            fixtureVC?.leagueKey = key
+            fixtureVC?.selectedSport = selectedSport
+            fixtureVC?.league = filteredLeagues?[indexPath.row]
+            navigationController?.pushViewController(fixtureVC!, animated: true)
+        }
     }
     
     private func configureCell(_ cell: LeagueTableViewCell, at indexPath: IndexPath) {
-        if let league = leagues?[indexPath.row] {
+        if let league = filteredLeagues?[indexPath.row] {
             cell.layer.borderColor = UIColor.yellow.cgColor
             cell.layer.borderWidth = 2
             cell.league_name?.text = league.league_name
@@ -120,8 +135,16 @@ class LeaguesTableViewController: UITableViewController,UICollectionViewDelegate
     }
     
     
-    
-    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines), !searchText.isEmpty {
+            filteredLeagues = leagues?.filter { league in
+                return league.league_name!.localizedCaseInsensitiveContains(searchText)
+            }
+        } else {
+            filteredLeagues = leagues
+        }
+        tableView.reloadData()
+    }
     
     
     

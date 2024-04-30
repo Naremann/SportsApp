@@ -13,4 +13,5 @@ protocol FavoriteLeaguesView {
 
 protocol FavoriteLeaguesPresenter {
     func viewDidLoad()
+    func deleteLeague(league : League)
 }

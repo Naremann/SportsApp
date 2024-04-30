@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Reachability
 
 class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UICollectionViewDelegateFlowLayout ,FavoriteLeaguesView{
    
- 
+    var reachability = try! Reachability()
+    
     
     var presenter: FavoriteLeaguesPresenter!
     var favoriteLeagues: [League] = []
@@ -69,8 +71,24 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
         return 90
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if reachability.connection != .unavailable {
+            print("AAAAAAAA")
+            print(favoriteLeagues.count)
+            var fixtureVC = self.storyboard?.instantiateViewController(withIdentifier: "FixtureMatchesViewController") as? FixtureMatchesViewController
+            let key = favoriteLeagues[indexPath.row].league_key
+            print("the league key is ",key)
+            fixtureVC?.leagueKey = key
+            fixtureVC?.selectedSport = .football
+            fixtureVC?.league = favoriteLeagues[indexPath.row]
+            navigationController?.pushViewController(fixtureVC!, animated: true)
+        }else{
+            AlertManager.showAlertWithTitle(title: "No Internet", message: "Please Check Your Internet Connection !!!", on: self)
+        }
+    }
 
 
+    
 
     
 
@@ -82,17 +100,21 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            AlertManager.showAlertForDeleteConfirmation(message: "Are you sure you want to delete this item?", viewController: self) {
+                self.presenter.deleteLeague(league: self.favoriteLeagues[indexPath.row])
+                self.presenter.viewDidLoad()
+                self.tableView.reloadData()
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

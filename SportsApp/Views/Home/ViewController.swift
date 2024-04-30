@@ -6,11 +6,11 @@
 //
 
 import UIKit
-
+import Reachability
 class ViewController: UIViewController , UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout , SportsView{
    
     
-
+    var reachabilty = try! Reachability()
     
     var sports: [SportItem] = []
     
@@ -101,8 +101,12 @@ class ViewController: UIViewController , UICollectionViewDelegate,UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if reachabilty.connection != .unavailable {
+                sportsPresenter.didSelectedSportAt(index: indexPath.row)
+            } else {
+                AlertManager.showAlertWithTitle(title: "No Internet", message: "Please Check Your Internet Connection !!!", on: self)
+            }
         
-        sportsPresenter.didSelectedSportAt(index: indexPath.row)
     }
     
     
