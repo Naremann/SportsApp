@@ -21,15 +21,28 @@ class CoreDataDatabase : Database{
             print("Error saving league item: \(error)")
         }
     }
+    
     func saveLeagueItem(league: League) {
-        let leagueEntity = LeagueEntity(context: context)
-        // Check if league_key is not nil and can be converted to an integer
-        let leagueKeyString = league.league_key
-        let leagueKeyInt = Int(leagueKeyString)
+       
+        let fetchRequest: NSFetchRequest<LeagueEntity> = LeagueEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "leagueKey == %@", NSNumber(value: league.league_key))
         
-        leagueEntity.leagueKey = NSDecimalNumber(integerLiteral: leagueKeyInt)
-        print("saved", leagueEntity.leagueKey)
-        print("saved",leagueEntity.leagueKey)
+        do {
+            let existingLeagues = try context.fetch(fetchRequest)
+            if let existingLeague = existingLeagues.first {
+                
+                print("\(league.league_name) is already exists")
+              
+                return
+            }
+        } catch {
+            print("Error fetching existing league: \(error)")
+            return
+        }
+        
+       
+        let leagueEntity = LeagueEntity(context: context)
+        leagueEntity.leagueKey = NSDecimalNumber(integerLiteral: league.league_key)
         leagueEntity.leagueName = league.league_name
         
         if let logoURLString = league.league_logo, let logoURL = URL(string: logoURLString) {
@@ -41,6 +54,8 @@ class CoreDataDatabase : Database{
             saveToContext()
         }
     }
+
+
     
     
     func getLeagues() -> [League] {
