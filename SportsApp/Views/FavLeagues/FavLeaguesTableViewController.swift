@@ -39,13 +39,62 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        favoriteLeagues.count
+        if favoriteLeagues.isEmpty {
+                return 1
+            } else {
+                return favoriteLeagues.count
+            }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ImageAndLabelTableViewCell
+     
+        if favoriteLeagues.isEmpty{
+            let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+             showNoFaviritesImgInTheCenter(cell: cell)
+                   return cell
+                    
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ImageAndLabelTableViewCell
+            
+            configureFaviriteCell(cell: cell,index: indexPath.row)
+            
+            return cell
+        }
+    }
+   
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if favoriteLeagues.isEmpty {
+            return tableView.frame.height
+        }else{
+            return 90
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if favoriteLeagues.isEmpty{
+            print("No Leagues")
+        }else{
+            if reachability.connection != .unavailable {
+                print("AAAAAAAA")
+                print(favoriteLeagues.count)
+                var fixtureVC = self.storyboard?.instantiateViewController(withIdentifier: "FixtureMatchesViewController") as? FixtureMatchesViewController
+                let key = favoriteLeagues[indexPath.row].league_key
+                print("the league key is ",key)
+                fixtureVC?.leagueKey = key
+                fixtureVC?.selectedSport = .football
+                fixtureVC?.league = favoriteLeagues[indexPath.row]
+                navigationController?.pushViewController(fixtureVC!, animated: true)
+            }else{
+                AlertManager.showAlertWithTitle(title: "No Internet", message: "Please Check Your Internet Connection !!!", on: self)
+            }
+        }
+    }
+    
+    
+    func configureFaviriteCell(cell:ImageAndLabelTableViewCell,index:Int){
+     
        
-        let league = favoriteLeagues[indexPath.row]
+        let league = favoriteLeagues[index]
         cell.layer.borderColor = UIColor.yellow.cgColor
         cell.layer.borderWidth = 2
         
@@ -55,6 +104,7 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
         cell.league_img.layer.cornerRadius = 40
         cell.league_img.clipsToBounds = true
 
+
         cell.league_img.round()
         if let data = league.logo_data {
             cell.league_img.image = UIImage(data: data)
@@ -62,29 +112,24 @@ class FavLeaguesTableViewController: UIViewController, UITableViewDelegate,UITab
                } else {
                    cell.league_img.image = UIImage(named: "sports")
                }
-               
-          
-        return cell
-    }
-   
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if reachability.connection != .unavailable {
-            print("AAAAAAAA")
-            print(favoriteLeagues.count)
-            var fixtureVC = self.storyboard?.instantiateViewController(withIdentifier: "FixtureMatchesViewController") as? FixtureMatchesViewController
-            let key = favoriteLeagues[indexPath.row].league_key
-            print("the league key is ",key)
-            fixtureVC?.leagueKey = key
-            fixtureVC?.selectedSport = .football
-            fixtureVC?.league = favoriteLeagues[indexPath.row]
-            navigationController?.pushViewController(fixtureVC!, animated: true)
-        }else{
-            AlertManager.showAlertWithTitle(title: "No Internet", message: "Please Check Your Internet Connection !!!", on: self)
-        }
+    func showNoFaviritesImgInTheCenter(cell:UITableViewCell){
+        let emptyImageView = UIImageView()
+        emptyImageView.contentMode = .scaleAspectFit
+     emptyImageView.tintColor = .systemYellow
+     emptyImageView.image = UIImage(systemName: "heart.slash")
+        
+        emptyImageView.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addSubview(emptyImageView)
+        
+        NSLayoutConstraint.activate([
+            emptyImageView.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor),
+            emptyImageView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+            
+            emptyImageView.widthAnchor.constraint(equalToConstant: 200),
+            emptyImageView.heightAnchor.constraint(equalToConstant: 200)
+        ])
     }
 
 

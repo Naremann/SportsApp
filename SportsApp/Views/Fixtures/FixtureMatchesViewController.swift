@@ -58,6 +58,8 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
         
     }
     
+   
+    
     func showLeagues(fixtures: [Fixture]) {
         self.upcomingFixture.removeAll()
         self.latestFixtures.removeAll()
@@ -156,27 +158,21 @@ class FixtureMatchesViewController: UIViewController,UICollectionViewDataSource,
     }
     
     private func configureTeamsLatestCell(_ cell: TeamsCustomCell, at indexPath: IndexPath) {
-//        cell.backgroundColor = .white
-       /* cell.homeTeamImage.isHidden = true
-        cell.awayTeamImage.isHidden = true
-        cell.awayTeamText.isHidden = true
-        cell.homeTeamText.isHidden = true
-        cell.timeText.isHidden = true
-        cell.dateText.isHidden = true*/
-       // cell.vs_img.isHighlighted = false
-
-//        cell.team_image.isHidden = false
         let team = teams?[indexPath.item]
-//        cell.team_image.layer.borderWidth = 2
-//        cell.team_image.layer.borderColor = UIColor.systemYellow.cgColor
-//        cell.team_image.layer.cornerRadius = 75
-//        cell.round()
    
 
         guard let imageUrl = team?.team_logo else{
            return
         }
         let url = URL(string: imageUrl)
+      
+        cell.teamLogo.layer.borderColor = UIColor.systemYellow.cgColor
+        cell.teamLogo.layer.borderWidth = 2
+        cell.teamLogo.clipsToBounds = true
+        cell.teamLogo.round()
+        cell.teamLogo.layer.cornerRadius = 60
+        
+    
         cell.teamLogo.kf.setImage(with: url, placeholder: UIImage(named: "sports"))
         cell.teamNameLabel.text = team?.team_name
         print("TEMA LOGO:\(imageUrl)")
