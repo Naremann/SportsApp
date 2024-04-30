@@ -23,7 +23,13 @@ class CoreDataDatabase : Database{
     }
     func saveLeagueItem(league: League) {
         let leagueEntity = LeagueEntity(context: context)
-        leagueEntity.leagueKey = Int32(league.league_key) as? NSDecimalNumber
+        // Check if league_key is not nil and can be converted to an integer
+        let leagueKeyString = league.league_key
+        let leagueKeyInt = Int(leagueKeyString)
+        
+        leagueEntity.leagueKey = NSDecimalNumber(integerLiteral: leagueKeyInt)
+        print("saved", leagueEntity.leagueKey)
+        print("saved",leagueEntity.leagueKey)
         leagueEntity.leagueName = league.league_name
         
         if let logoURLString = league.league_logo, let logoURL = URL(string: logoURLString) {
@@ -44,13 +50,14 @@ class CoreDataDatabase : Database{
         
         fetchRequest.entity = NSEntityDescription.entity(forEntityName: "LeagueEntity", in: context)
         
-        do {
+        do{
                let fetchedLeagues = try context.fetch(fetchRequest) as! [LeagueEntity]
                
             for leagueEntity in fetchedLeagues {
                 if let leagueName = leagueEntity.leagueName {
                     
-                    let leagueKey = Int(leagueEntity.leagueKey ?? 0)
+                    let leagueKey = Int(truncating: leagueEntity.leagueKey ?? 0)
+                    print("aaaaaa",leagueEntity.leagueKey)
                     var logoURLString: String?
                     
                     if let logoData = leagueEntity.league_logo {
@@ -62,7 +69,7 @@ class CoreDataDatabase : Database{
                 }
             }
 
-         } catch {
+         }catch{
          print("Error fetching leagues: \(error)")
          }
          
@@ -91,9 +98,22 @@ class CoreDataDatabase : Database{
 
     
     func deleteLeagueItem(league: League) {
-       
-
+            let fetchRequest: NSFetchRequest<LeagueEntity> = LeagueEntity.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "leagueName == %@", league.league_name!)
+            
+            do {
+                let fetchedLeagues = try context.fetch(fetchRequest)
+                guard let leagueEntityToDelete = fetchedLeagues.first else {
+                    print("League not found in database")
+                    return
+                }
+                
+                context.delete(leagueEntityToDelete)
+                saveToContext()
+                print("League item deleted successfully")
+            } catch {
+                print("Error deleting league item: \(error)")
+            }
     }
-    
-    
+
 }

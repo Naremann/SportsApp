@@ -21,5 +21,9 @@ class FavoriteLeaguesPresenterImpl : FavoriteLeaguesPresenter{
            view?.displayFavoriteLeagues(leagues: favoriteLeagues)
        }
     
+    func deleteLeague(league : League){
+        database.deleteLeagueItem(league: league)
+    }
+    
     
 }

@@ -41,6 +41,8 @@ class TeamDetailsViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        teamName.font = UIFont(name: "Pacifico-Regular", size: 30)
+        teamName.textColor = .systemYellow
         teamName.text = "\(teamDetails?.team_name ?? "")"
         coachName.text = "Coach: \(teamDetails?.coaches?[0].coach_name ?? "")"
         teamLogo.kf.setImage(with: URL(string: teamDetails?.team_logo ?? "") ,placeholder: UIImage(named: "sports"))
