@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0A1D970D2BDD177F00E6B2AD /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D970C2BDD177F00E6B2AD /* TeamDetailsViewController.swift */; };
 		0A1D97102BDD18FF00E6B2AD /* PlayerCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D970F2BDD18FF00E6B2AD /* PlayerCustomCell.swift */; };
+		0A26D0572BE2A6CA00F69F1C /* FixturesInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A26D0562BE2A6CA00F69F1C /* FixturesInteractorTests.swift */; };
+		0A26D0592BE2A76E00F69F1C /* FixturesMocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A26D0582BE2A76E00F69F1C /* FixturesMocking.swift */; };
+		0A26D05B2BE2A79100F69F1C /* FixturesMockingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A26D05A2BE2A79100F69F1C /* FixturesMockingTest.swift */; };
+		0A26D05E2BE2ACB800F69F1C /* DatabaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A26D05D2BE2ACB800F69F1C /* DatabaseTest.swift */; };
 		0A7F44092BDAF62100BDB5CA /* FixtureMatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F44082BDAF62100BDB5CA /* FixtureMatchesViewController.swift */; };
 		0A7F440B2BDAF74200BDB5CA /* FixtureMatchesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F440A2BDAF74200BDB5CA /* FixtureMatchesCell.swift */; };
 		0A7F440D2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7F440C2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift */; };
@@ -80,6 +84,10 @@
 /* Begin PBXFileReference section */
 		0A1D970C2BDD177F00E6B2AD /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		0A1D970F2BDD18FF00E6B2AD /* PlayerCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCustomCell.swift; sourceTree = "<group>"; };
+		0A26D0562BE2A6CA00F69F1C /* FixturesInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesInteractorTests.swift; sourceTree = "<group>"; };
+		0A26D0582BE2A76E00F69F1C /* FixturesMocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesMocking.swift; sourceTree = "<group>"; };
+		0A26D05A2BE2A79100F69F1C /* FixturesMockingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesMockingTest.swift; sourceTree = "<group>"; };
+		0A26D05D2BE2ACB800F69F1C /* DatabaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTest.swift; sourceTree = "<group>"; };
 		0A7F44082BDAF62100BDB5CA /* FixtureMatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureMatchesViewController.swift; sourceTree = "<group>"; };
 		0A7F440A2BDAF74200BDB5CA /* FixtureMatchesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureMatchesCell.swift; sourceTree = "<group>"; };
 		0A7F440C2BDB01E700BDB5CA /* FixturesPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesPresenterProtocol.swift; sourceTree = "<group>"; };
@@ -169,6 +177,24 @@
 				0A1D970F2BDD18FF00E6B2AD /* PlayerCustomCell.swift */,
 			);
 			path = TeamDetails;
+			sourceTree = "<group>";
+		};
+		0A26D0552BE2A69500F69F1C /* FixturesTest */ = {
+			isa = PBXGroup;
+			children = (
+				0A26D0562BE2A6CA00F69F1C /* FixturesInteractorTests.swift */,
+				0A26D0582BE2A76E00F69F1C /* FixturesMocking.swift */,
+				0A26D05A2BE2A79100F69F1C /* FixturesMockingTest.swift */,
+			);
+			path = FixturesTest;
+			sourceTree = "<group>";
+		};
+		0A26D05C2BE2AC5800F69F1C /* DatabaseTest */ = {
+			isa = PBXGroup;
+			children = (
+				0A26D05D2BE2ACB800F69F1C /* DatabaseTest.swift */,
+			);
+			path = DatabaseTest;
 			sourceTree = "<group>";
 		};
 		0A7F44052BDAE5F600BDB5CA /* Fixtures */ = {
@@ -319,6 +345,8 @@
 		C8AF10D52BE2684D0049FD1D /* SportsAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				0A26D05C2BE2AC5800F69F1C /* DatabaseTest */,
+				0A26D0552BE2A69500F69F1C /* FixturesTest */,
 				C8AF10E82BE282FD0049FD1D /* LeagueTest */,
 				C8AF10E52BE282D90049FD1D /* TeamTest */,
 				C8AF10D62BE2684D0049FD1D /* SportsAppTests.swift */,
@@ -585,6 +613,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A26D0592BE2A76E00F69F1C /* FixturesMocking.swift in Sources */,
+				0A26D05B2BE2A79100F69F1C /* FixturesMockingTest.swift in Sources */,
 				C807B6CF2BE28F490017CA33 /* MockTeamNetworkServices.swift in Sources */,
 				C8AF10E22BE272670049FD1D /* MockLeagueNetworkServiceTest.swift in Sources */,
 				C8AF10E02BE26E350049FD1D /* MockLeagueNetworkServices.swift in Sources */,
@@ -593,6 +623,8 @@
 				C8AF10DE2BE269B10049FD1D /* LeaguesInteractorTests.swift in Sources */,
 				C807B6D32BE291440017CA33 /* MockTeamNetworkServiceTest.swift in Sources */,
 				C8AF10E72BE282F20049FD1D /* TeamsInteractorTests.swift in Sources */,
+				0A26D05E2BE2ACB800F69F1C /* DatabaseTest.swift in Sources */,
+				0A26D0572BE2A6CA00F69F1C /* FixturesInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
