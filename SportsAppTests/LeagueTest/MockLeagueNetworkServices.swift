@@ -9,7 +9,7 @@
 @testable import SportsApp
 import Foundation
 
-class MockNetworkServices {
+class MockLeagueNetworkServices {
     var shouldResultError: Bool
 
        init(shouldResultError: Bool) {
@@ -29,22 +29,28 @@ class MockNetworkServices {
                ]
            ]
        ]
+    
+    
 
-       func fetchLeagues(completionHandler: @escaping (LeaguesResponse?) -> Void) {
+}
+
+extension MockLeagueNetworkServices{
+    
+    func fetchData(sport:Sport,completionHandler: @escaping(Result<[League] , Error>) -> Void){
            if shouldResultError {
-               completionHandler(nil)
+               completionHandler(.failure(ResponseWithError.responserError))
                return
            }
            guard let jsonData = try? JSONSerialization.data(withJSONObject: fakeJsonObj) else {
-               completionHandler(nil)
+               completionHandler(.failure(ResponseWithError.responserError))
                return
            }
 
            do {
                let result = try JSONDecoder().decode(LeaguesResponse.self, from: jsonData)
-               completionHandler(result)
-           } catch {
-               completionHandler(nil)
+               completionHandler(.success(result.result))
+           } catch let error{
+               completionHandler(.failure(error))
            }
        }
 }
